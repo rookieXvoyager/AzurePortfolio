@@ -200,14 +200,15 @@ function showNotification(message, type = 'success') {
         right: '20px',
         padding: '1rem 1.5rem',
         borderRadius: '8px',
-        backgroundColor: type === 'success' ? '#10b981' : '#ef4444',
+        backgroundColor: type === 'success' ? '#7c3aed' : '#ef4444',
         color: 'white',
         fontWeight: '600',
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+        boxShadow: type === 'success' ? '0 0 25px rgba(124, 58, 237, 0.6)' : '0 0 25px rgba(239, 68, 68, 0.6)',
         zIndex: '10000',
         animation: 'slideInRight 0.3s ease-out',
         maxWidth: '90%',
-        fontSize: '0.95rem'
+        fontSize: '0.95rem',
+        border: `1px solid ${type === 'success' ? 'rgba(124, 58, 237, 0.5)' : 'rgba(239, 68, 68, 0.5)'}`
     });
     
     // Add animation keyframes
@@ -344,16 +345,17 @@ function createScrollToTopButton() {
         width: '50px',
         height: '50px',
         borderRadius: '50%',
-        backgroundColor: '#2563eb',
-        color: 'white',
+        background: 'linear-gradient(135deg, #00d4ff, #7c3aed)',
+        color: '#0a0a0f',
         border: 'none',
         fontSize: '1.5rem',
         cursor: 'pointer',
         opacity: '0',
         visibility: 'hidden',
         transition: 'opacity 0.3s, visibility 0.3s, transform 0.3s',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        zIndex: '999'
+        boxShadow: '0 0 20px rgba(0, 212, 255, 0.6)',
+        zIndex: '999',
+        fontWeight: 'bold'
     });
     
     document.body.appendChild(scrollBtn);
@@ -380,10 +382,12 @@ function createScrollToTopButton() {
     // Hover effect
     scrollBtn.addEventListener('mouseenter', () => {
         scrollBtn.style.transform = 'scale(1.1)';
+        scrollBtn.style.boxShadow = '0 0 30px rgba(0, 212, 255, 0.8)';
     });
     
     scrollBtn.addEventListener('mouseleave', () => {
         scrollBtn.style.transform = 'scale(1)';
+        scrollBtn.style.boxShadow = '0 0 20px rgba(0, 212, 255, 0.6)';
     });
 }
 
@@ -456,7 +460,7 @@ function createPreloader() {
         left: '0',
         width: '100%',
         height: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#0a0a0f',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -468,10 +472,11 @@ function createPreloader() {
     Object.assign(spinner.style, {
         width: '50px',
         height: '50px',
-        border: '5px solid #f3f4f6',
-        borderTop: '5px solid #2563eb',
+        border: '5px solid #1a1a24',
+        borderTop: '5px solid #00d4ff',
         borderRadius: '50%',
-        animation: 'spin 1s linear infinite'
+        animation: 'spin 1s linear infinite',
+        boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)'
     });
     
     // Add spinner animation
